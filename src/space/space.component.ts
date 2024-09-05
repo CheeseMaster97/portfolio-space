@@ -2,13 +2,13 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { EngineService } from '../engine/engine.service';
 
 @Component({
-  selector: 'app-room',
+  selector: 'app-space',
   standalone: true,
   imports: [],
-  templateUrl: './room.component.html',
-  styleUrl: './room.component.scss',
+  templateUrl: './space.component.html',
+  styleUrl: './space.component.scss',
 })
-export class RoomComponent implements OnInit {
+export class SpaceComponent implements OnInit {
   @ViewChild('canvas', { static: true })
   private canvas!: ElementRef<HTMLCanvasElement>;
 

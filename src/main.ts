@@ -1,7 +1,7 @@
 import { bootstrapApplication } from '@angular/platform-browser';
-import { RoomComponent } from './room/room.component';
+import { SpaceComponent } from './space/space.component';
 import { EngineService } from './engine/engine.service';
 
-bootstrapApplication(RoomComponent, { providers: [EngineService] }).catch(
+bootstrapApplication(SpaceComponent, { providers: [EngineService] }).catch(
   (err) => console.error(err)
 );
