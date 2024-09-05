@@ -1,5 +1,6 @@
 import { ElementRef, Injectable } from '@angular/core';
 import {
+  ArcRotateCamera,
   Engine,
   FreeCamera,
   HemisphericLight,
@@ -8,18 +9,19 @@ import {
   Scene,
   Vector3,
 } from 'babylonjs';
+import { CameraService } from '../camera/camera.service';
 
 @Injectable({ providedIn: 'root' })
 export class EngineService {
   private canvas!: HTMLCanvasElement;
   private engine!: Engine;
   private scene!: Scene;
-  private camera!: FreeCamera;
+  private camera!: ArcRotateCamera;
   private light!: HemisphericLight;
   private sphere!: Mesh;
   private ground!: Mesh;
 
-  constructor() {}
+  constructor(private cameraService: CameraService) {}
 
   public createScene(canvas: ElementRef<HTMLCanvasElement>): void {
     this.canvas = canvas.nativeElement;
@@ -31,13 +33,7 @@ export class EngineService {
 
     this.scene = new Scene(this.engine);
 
-    this.camera = new FreeCamera(
-      'freeCamera',
-      new Vector3(0, 5, -10),
-      this.scene
-    );
-    this.camera.setTarget(Vector3.Zero());
-    this.camera.attachControl(this.canvas, false);
+    this.camera = this.cameraService.createCamera(this.scene, canvas);
 
     this.light = new HemisphericLight(
       'hemiLight',
