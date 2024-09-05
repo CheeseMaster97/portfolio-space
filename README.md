@@ -1,3 +1,3 @@
-# PortfolioRoom
+# PortfolioSpace
 
-A 3D portfolio room made with Angular framework and Babylon.js game engine.
+A 3D portfolio space made with Angular framework and Babylon.js game engine.
